@@ -1,9 +1,4 @@
 <?php
-
-namespace Lazada;
-
-use Exception;
-
 class LazopRequest
 {
 	public $apiName;

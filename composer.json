@@ -1,17 +1,18 @@
 {
-    "name": "appolous/lazada-php-sdk",
+    "name": "upbase/lazada-php-sdk",
     "description": "A Lazada PHP SDK for Laravel",
     "keywords": [
         "lazada",
-        "laravel"
+        "laravel",
+        "upbase"
     ],
-    "homepage": "https://github.com/appolous/lazada-php-sdk",
+    "homepage": "https://github.com/technology20nn/lazada-php-sdk",
     "license": "MIT",
     "authors": [
         {
-            "name": "Appolous Team",
-            "email": "hello@appolous.com",
-            "homepage": "https://www.appolous.com",
+            "name": "Upbase Team",
+            "email": "huy@upbase.vn",
+            "homepage": "https://upbase.vn",
             "role": "Developer"
         }
     ],
