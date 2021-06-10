@@ -1,4 +1,6 @@
 <?php
+namespace Lazada;
+
 class LazopLogger
 {
 	public $conf = array(

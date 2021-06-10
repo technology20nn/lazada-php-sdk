@@ -1,4 +1,7 @@
 <?php
+
+namespace Lazada;
+
 class LazopClient
 {
 	public $appkey;
