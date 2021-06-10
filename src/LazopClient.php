@@ -2,6 +2,8 @@
 
 namespace Lazada;
 
+use Exception;
+
 class LazopClient
 {
 	public $appkey;
