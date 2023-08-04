@@ -329,4 +329,44 @@ class LazopClient
 	    return (substr($haystack, -$length) === $needle);
 	 }
 
+    public function buildRequest(LazopRequest $request, $accessToken = null)
+    {
+        $sysParams["app_key"] = $this->appkey;
+        $sysParams["sign_method"] = $this->signMethod;
+        $sysParams["timestamp"] = $this->msectime();
+        if (null != $accessToken)
+        {
+            $sysParams["access_token"] = $accessToken;
+        }
+
+        $apiParams = $request->udfParams;
+
+        $requestUrl = $this->gatewayUrl;
+
+        if($this->endWith($requestUrl,"/"))
+        {
+            $requestUrl = substr($requestUrl, 0, -1);
+        }
+
+        $requestUrl .= $request->apiName;
+        $requestUrl .= '?';
+
+        $sysParams["partner_id"] = $this->sdkVersion;
+
+        if($this->logLevel == Constants::$log_level_debug)
+        {
+            $sysParams["debug"] = 'true';
+        }
+
+        $sysParams["sign"] = $this->generateSign($request->apiName,array_merge($apiParams, $sysParams));
+
+        foreach ($sysParams as $sysParamKey => $sysParamValue)
+        {
+            $requestUrl .= "$sysParamKey=" . urlencode($sysParamValue) . "&";
+        }
+
+        $requestUrl = substr($requestUrl, 0, -1);
+
+        return [$requestUrl, $apiParams,$request->headerParams];
+    }
 }
