@@ -105,7 +105,7 @@ class LazopClient
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 		}
 
-	    $output = curl_exec($ch);
+	    $response = curl_exec($ch);
 		
 		$errno = curl_errno($ch);
 
@@ -120,11 +120,11 @@ class LazopClient
 			curl_close($ch);
 			if (200 !== $httpStatusCode)
 			{
-				throw new Exception($reponse,$httpStatusCode);
+				throw new Exception($response,$httpStatusCode);
 			}
 		}
 
-		return $output;
+		return $response;
 	}
 
 	public function curl_post($url, $postFields = null, $fileFields = null,$headerFields = null)
